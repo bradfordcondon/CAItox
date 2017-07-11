@@ -5,7 +5,8 @@ This repo is for calculating codon adaptation indices.
 
 To use this repo, you must:
 
-* `mkdir fasta` && `mkdir fasta/tox` && `mkdir fasta/ctrl`
+* Clone the repo to your Desktop.  To do this, execute the command `git clone https://github.com/bradfordcondon/CAItox.git`
+* `cd CAItox` && `mkdir fasta` && `mkdir fasta/tox` && `mkdir fasta/ctrl`
 * Move tox and control sequence into their respective folders.
 * Ensure that all taxa are labeled as a two letter code.  The first two letters of each file should match the first two letters of the codon usage table.
 
