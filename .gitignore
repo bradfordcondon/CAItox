@@ -1,4 +1,6 @@
 *.xlsx
 ignore
 .DS_store
+fasta
+out
 

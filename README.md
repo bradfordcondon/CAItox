@@ -3,17 +3,39 @@ This repo is for calculating codon adaptation indices.
 
 ## Setup guide
 
+To use this repo, you must:
+
+* `mkdir fasta` && `mkdir fasta/tox` && `mkdir fasta/ctrl`
+* Move tox and control sequence into their respective folders.
+* Ensure that all taxa are labeled as a two letter code.  The first two letters of each file should match the first two letters of the codon usage table.
+
+
+### Output
+
+the `out` folder will have follow `out/[taxon]/out/[gene_type]/`.  For example, `out/Aq/tox/` has the CAIcal output for each input tox gene from the Aq taxon. 
+
+
+### Overview
+
+**CAICal Parameters**: `p` is 95, `n` is 500, `l` is length of input sequence.
+
+`perl scripts/CAIcal_ECAI_v1.4.pl -f $ctrlseq -h codons/${dir}_CUT_Apr2017.txt -p 95 -n 500 -l ${length} -o1 out/${dir}/out/ctrl/cai_${gene}.txt -o2 out/${dir}/out/ctrl/random_${gene}.txt -o3 out/${dir}/out/ctrl/expected_${gene}.txt`
+
+
 * `CAIcal_ECAI_v1.4.pl`
 	- [Codon adaptation index calculator](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2553769/). 
 	- [web version](http://genomes.urv.es/CAIcal/)
 	- [local verison](http://genomes.urv.es/CAIcal/formulari.php)
 	- [CAIcal manual](http://genomes.urv.es/CAIcal/tutorial.pdf)
 * `setup_wd.sh`
-	- This script sets up the working environment.
+	- This script sets up the working environment (splits the initial fasta files, creates a folder for each organism.)
 * `batch_execute.sh`
 	- This script splits the FASTA files and runs the CAI calculator.
 	- Each genome's genes are calculated against its own CUT table, based on the genes in the `ctrl` folder of each directory.
 	- Gene CAIs are calculated individually so that AA/GC composition of the synthetic genes match the query.
+	- `-l` parameter given with length of input sequence.
+
+
 
 ## Parameter guide
 
@@ -32,8 +54,6 @@ This repo is for calculating codon adaptation indices.
 
 ```
 
-` -f cct3.fas -h chcut2.txt -p 95 -n 500 -l 548`
-
 
 ##notebook
 
@@ -45,4 +65,4 @@ Confirm that codon usage tables are correct.
 
 Done for C4, CUTs match.
 
-
+Next, automated setting up the working directory and the 

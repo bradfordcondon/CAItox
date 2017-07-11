@@ -24,17 +24,19 @@ do
 	length=$(tail -n +2 ${ctrlseq} | tr -d '\n' |   wc -c | awk '{print $1/3}')
 
 	 perl scripts/CAIcal_ECAI_v1.4.pl -f $ctrlseq -h codons/${dir}_CUT_Apr2017.txt -p 95 -n 500 -l ${length} -o1 out/${dir}/out/ctrl/cai_${gene}.txt -o2 out/${dir}/out/ctrl/random_${gene}.txt -o3 out/${dir}/out/ctrl/expected_${gene}.txt
+	
 	done
 
 for toxseq in fasta/${dir}/tox/*
 
 	do
-		gene=${ctrlseq#"fasta/Aq/ctrl/"}
+		gene=${toxseq#"fasta/$dir/tox/"}
 		gene=${gene%".fasta"}
 
-			length = tail -n +2 ${ctrlseq} | tr -d '\n' |   wc -c | awk '{print $1/3}'
+	length=$(tail -n +2 ${toxseq} | tr -d '\n' |   wc -c | awk '{print $1/3}')
 
-	 perl scripts/CAIcal_ECAI_v1.4.pl -f $toxseq -h codons/${cut}_CUT_Apr2017.txt -p 95 -n 500 -l ${length} -o1 out/${dir}/out/tox/cai_${gene}.txt -o2 out/${dir}/out/tox/random_${gene}.txt -o3 out/${dir}/out/tox/expected_${gene}.txt
+	 perl scripts/CAIcal_ECAI_v1.4.pl -f $toxseq -h codons/${dir}_CUT_Apr2017.txt -p 95 -n 500 -l ${length} -o1 out/${dir}/out/tox/cai_${gene}.txt -o2 out/${dir}/out/tox/random_${gene}.txt -o3 out/${dir}/out/tox/expected_${gene}.txt
+	
 	done
 
 done
