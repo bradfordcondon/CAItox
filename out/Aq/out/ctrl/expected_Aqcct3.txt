@@ -1,8 +1,0 @@
-EXPECTED CAI at 95% confident that contain 95% of population
-Upper (one-side) Tolerance Limit (eCAI):	 0.688
-CAI Average:	 0.662
-Standard deviation:	 0.015
-Number of random sequences: 500
-Kolmogorov-Smirnov test for the expected RCDI (alpha = 5%): 0.02505 < Critical Value(0.06082) [NORMALITY]
-Chi-Square Goodness-of-Fit test for AA (alpha = 5%): the 100.0% of sequences fit the AA distribution.
-Chi-Square Goodness-of-Fit test for GC (alpha = 5%): the 100.0% of sequences fit the GC distribution.
