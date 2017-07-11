@@ -1,3 +1,4 @@
 *.xlsx
 ignore
+.DS_store
 
