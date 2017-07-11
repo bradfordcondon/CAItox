@@ -3,12 +3,17 @@ This repo is for calculating codon adaptation indices.
 
 ## Setup guide
 
-`CAIcal_ECAI_v1.3.pl`
-
-* [Codon adaptation index calculator](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2553769/). 
+* `CAIcal_ECAI_v1.4.pl`
+	- [Codon adaptation index calculator](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2553769/). 
 	- [web version](http://genomes.urv.es/CAIcal/)
 	- [local verison](http://genomes.urv.es/CAIcal/formulari.php)
 	- [CAIcal manual](http://genomes.urv.es/CAIcal/tutorial.pdf)
+* `setup_wd.sh`
+	- This script sets up the working environment.
+* `batch_execute.sh`
+	- This script splits the FASTA files and runs the CAI calculator.
+	- Each genome's genes are calculated against its own CUT table, based on the genes in the `ctrl` folder of each directory.
+	- Gene CAIs are calculated individually so that AA/GC composition of the synthetic genes match the query.
 
 ## Parameter guide
 
