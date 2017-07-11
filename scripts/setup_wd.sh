@@ -1,78 +1,61 @@
 #!/bin/bash
-
-#Array of tox genes we'll seperate from the controls
-
-declare -a toxgenes=("DEC1" "LAM1" "OXI1" "PKS1" "PKS2" "REDa" "Redb" "TOX10" "TOX9")
-
-declare -a taxa=("Aq" "Ar" "Ca" "Cc" "Ch" "Dzm" "Li" "Lm" "Pbr" "Pra")
-
-
+cd fasta
 ##Set up working directory
 mkdir Aq
 mkdir Ar
 mkdir Ca
 mkdir Cc
 mkdir Ch
-mkdir Dzm
+mkdir Dz
 mkdir Li
 mkdir Lm
-mkdir Pbr
-mkdir Pra
+mkdir Pb
+mkdir Pr
 
 mkdir Aq/tox
 mkdir Ar/tox
 mkdir Ca/tox
 mkdir Cc/tox
 mkdir Ch/tox
-mkdir Dzm/tox
+mkdir Dz/tox
 mkdir Li/tox
 mkdir Lm/tox
-mkdir Pbr/tox
-mkdir Pra/tox
+mkdir Pb/tox
+mkdir Pr/tox
 
 mkdir Aq/ctrl
 mkdir Ar/ctrl
 mkdir Ca/ctrl
 mkdir Cc/ctrl
 mkdir Ch/ctrl
-mkdir Dzm/ctrl
+mkdir Dz/ctrl
 mkdir Li/ctrl
 mkdir Lm/ctrl
-mkdir Pbr/ctrl
-mkdir Pra/ctrl
+mkdir Pb/ctrl
+mkdir Pr/ctrl
 
+cd tox
 
 FILES=*.txt
 for f in $FILES
 do
-	perl ../scripts/split_fasta.pl < $f
-
-done
-
-for dir in */
-
-	cd dir
-
-	for f in *.fasta
-	do
-	
-	if [[ " ${toxgenes[@]} " =~ " ${f} " ]]; then
-
-		mv $f tox/
-	else 
-		mv $f ctrl/
-
-	fi
-
-
-
+	perl ../../scripts/split_fasta.pl < $f
+	mv *.fasta ../${f:0:2}/tox/
 done
 
 
 
+cd ../conserved
 
+FILES=*.txt
+for f in $FILES
+do
+	perl ../../scripts/split_fasta.pl < $f
+	mv *fasta ../${f:0:2}/ctrl/
 
+done
 
-## move sequences to appropriate folder
+cd ../
 
-# I didn't automate this!
+rm -rf tox
+rm -rf conserved
