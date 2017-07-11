@@ -10,6 +10,8 @@ To use this repo, you must:
 * Move tox and control sequence into their respective folders.
 * Ensure that all taxa are labeled as a two letter code.  The first two letters of each file should match the first two letters of the codon usage table.
 
+You need BioPerl installed to use `split_fasta.pl`.
+
 
 ### Output
 
@@ -56,7 +58,7 @@ the `out` folder will have follow `out/[taxon]/out/[gene_type]/`.  For example, 
 ```
 
 
-##notebook
+## Notebook
 
 Confirm that codon usage tables are correct.
 
