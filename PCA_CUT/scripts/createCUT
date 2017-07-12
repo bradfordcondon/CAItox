@@ -1,0 +1,13 @@
+
+mkdir toxFasta
+
+cp ../ignore/tox_fasta/* toxFasta/
+
+cd toxFasta
+##remove all headers from all FASTA files  >*.
+for f in *.txt;
+do
+    sed 's/\>.*//g'  $f > ${f}.trim
+done
+
+
